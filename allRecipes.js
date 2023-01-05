@@ -12,14 +12,15 @@ const recipes = [];
       const html= response.data;
       const $=cheerio.load(html);
     
-      $('figure > a div.title', html).each(function(){
-        const title = $(this).text().trim();
-        const url = $(this.parentNode.parentNode).attr('href');
+      $('div.entry figure > a ', html).each(function(){
+        const title = $(this).attr('title').trim();
+        const url = $(this).attr('href');
        // const id = (!recipes.length ? 1 : (recipes.length)+1)
-       const img=$('figure > a div.image img', html).attr('data-src');
+       const img=$(this).children().first().children().first().attr('data-src');
+       //const img2=img;
         const id =url.slice(-5);
         recipes.push({
-          title,
+          title: title,
           url: recipe.base + url,
           category: recipe.name,
           id : id,

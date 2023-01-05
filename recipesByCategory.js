@@ -14,15 +14,20 @@ export function recipesByCategory (categoryName){
       const  $ = cheerio.load(html);
 
       specificRecipes= []
-       $('figure.recipe > a div.title', html).each(  function(){
-        const title= $(this).text().trim();
-        const url = $(this.parentNode.parentNode).attr('href');
+      $('div.entry figure > a ', html).each(function(){
+        const title = $(this).attr('title').trim();
+        const url = $(this).attr('href');
+       // const id = (!recipes.length ? 1 : (recipes.length)+1)
+       const img=$(this).children().first().children().first().attr('data-src');
+        const id=url.slice(-5);
        
           specificRecipes.push(
           {
             title: title,
             url: categoryBase +url,
-            categoryName: categoryName
+            categoryName: categoryName,
+            id : id,
+            img: img
           }
         )
       })

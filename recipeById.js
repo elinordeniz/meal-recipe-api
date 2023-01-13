@@ -47,6 +47,7 @@ export function recipeById (recipeId) {
      })
         displayAll= [
             {
+                id: recipeId,
                 title: title,
                 category: recipeCategory,
                 img:img,

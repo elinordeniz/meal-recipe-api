@@ -8,13 +8,13 @@ const recipeList= allRecipes.allRecipes();
  let displayAll=[];
  let descriptionSteps=[];
 
-function recipeById (recipeId) {
+async function recipeById (recipeId) {
  //console.log(recipeList)
    const recipeLink = recipeList.filter(recipe => recipe.id===recipeId)[0]?.url;
    const recipeCategory= recipeList.filter(recipe=> recipe.id===recipeId)[0]?.category;
    const className= `dev-ingredient-amount-${recipeId}`;
    
-    axios.get(recipeLink).
+   await axios.get(recipeLink).
     then(response => {
         const html= response.data;
         const $ = cheerio.load(html);

@@ -4,9 +4,10 @@ const cheerio =require('cheerio');
 const recipes = [];
 const idArray=[]
   
-   function allRecipes() {
+function allRecipes() {
     
-
+  new Promise((resolve, reject)=>{
+    
     category.category.forEach(recipe => {
     axios.get(recipe.links[0]).
     then(response=> {
@@ -38,6 +39,8 @@ const idArray=[]
    
   
   })
+  resolve();
+})
   
 return recipes;
 }

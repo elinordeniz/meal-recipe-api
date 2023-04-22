@@ -3,12 +3,12 @@ const cheerio= require('cheerio');
 const category = require("./category.js");
 var specificRecipes= [];
 
- function recipesByCategory (categoryName){
+ async function recipesByCategory (categoryName){
     
     const categoryLink= category.category.filter(category => category.name===categoryName)[0].links[0];
     const categoryBase= category.category.filter(category => category.name===categoryName)[0].base;
     
-     axios.get(categoryLink).
+    await axios.get(categoryLink).
     then( response => {
       const html = response.data;
       const  $ = cheerio.load(html);

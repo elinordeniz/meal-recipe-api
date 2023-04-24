@@ -8,9 +8,9 @@ async function allRecipes() {
    category.category.forEach(async (recipe) => {
     await axios
       .get(recipe.links[0])
-      .then(async (response) => {
-        const html = await response.data;
-        const $ = await cheerio.load(html);
+      .then((response) => {
+        const html = response.data;
+        const $ = cheerio.load(html);
 
         $("div.entry figure > a ", html).each(function () {
           const title = $(this).attr("title").trim();

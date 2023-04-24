@@ -6,7 +6,7 @@ const recipesByCategory = require("./recipesByCategory.js");
 
 const app = express();
 const router = express.Router();
-const allRecipe = allRecipes.allRecipes();
+
 
 app.use("/", router);
 app.use("/.netlify/functions/api", router);
@@ -16,11 +16,11 @@ router.get("/", (req, res) => {
 });
 
 router.get("/recipes", async (req, res) => {
-  res.json(await allRecipe);
+  res.json(await allRecipes.allRecipes());
 });
 
 router.get("/recipe/:recipeId", async (req, res) => {
-  const recipeList = await allRecipe;
+  const recipeList = await allRecipes.allRecipes();
   const recipeId = req.params.recipeId;
   const displayRecipe = await recipeById.recipeById(recipeId, recipeList);
   res.json(displayRecipe);

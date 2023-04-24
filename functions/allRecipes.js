@@ -5,7 +5,7 @@ const recipes = [];
 const idArray = [];
 
 async function allRecipes() {
-  await category.category.forEach(async (recipe) => {
+   category.category.forEach(async (recipe) => {
     await axios
       .get(recipe.links[0])
       .then(async (response) => {

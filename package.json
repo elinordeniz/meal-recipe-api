@@ -1,7 +1,7 @@
 {
   "name": "meal-recipe-api",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./functions/api.js",
   "scripts": {
     "start": "node ./functions/api.js",
     "dev": "netlify dev"

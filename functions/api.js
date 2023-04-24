@@ -9,6 +9,7 @@ const router = express.Router();
 const allRecipe = allRecipes.allRecipes();
 
 app.use("/", router);
+app.use("/.netlify/functions/api", router);
 
 router.get("/", (req, res) => {
   res.json("Hello, welcome to my food api :)!");

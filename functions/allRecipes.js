@@ -4,12 +4,12 @@ const cheerio = require("cheerio");
 const recipes = [];
 const idArray = [];
 
-async function allRecipes() {
-   category.category.forEach(async (recipe) => {
+ async function allRecipes() {
+  await category.category.forEach(async (recipe) => {
     await axios
       .get(recipe.links[0])
-      .then((response) => {
-        const html = response.data;
+      .then(async (response) => {
+        const html =await response.data;
         const $ = cheerio.load(html);
 
         $("div.entry figure > a ", html).each(function () {

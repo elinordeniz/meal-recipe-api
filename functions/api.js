@@ -16,12 +16,14 @@ router.get("/", (req, res) => {
 });
 
 router.get("/recipes", async (req, res) => {
-  res.json(await allRecipes.allRecipes());
+  const allRecipe=await allRecipes.allRecipes()
+  res.json(allRecipe);
 });
 
 router.get("/recipe/:recipeId", async (req, res) => {
-  const recipeList = await allRecipes.allRecipes();
   const recipeId = req.params.recipeId;
+
+  const recipeList = await allRecipes.allRecipes();
   const displayRecipe = await recipeById.recipeById(recipeId, recipeList);
   res.json(displayRecipe);
 });

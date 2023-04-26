@@ -3,10 +3,10 @@ const serverless = require("serverless-http");
 const allRecipes = require("./allRecipes.js");
 const recipeById = require("./recipeById.js");
 const recipesByCategory = require("./recipesByCategory.js");
+const recipes=require("./recipes.js")
 
 const app = express();
 const router = express.Router();
-
 
 app.use("/", router);
 app.use("/.netlify/functions/api", router);
@@ -15,8 +15,18 @@ router.get("/", (req, res) => {
   res.json("Hello, welcome to my food api :)!");
 });
 
+// router.get("/recipes", async (req, res) => {
+//   //const allRecipe=await allRecipes.allRecipes()
+//   // console.log(allRecipe)
+//   const allrecipe=await recipes.arecipes();
+
+//   res.json(allrecipe);
+// });
 router.get("/recipes", async (req, res) => {
   const allRecipe=await allRecipes.allRecipes()
+   console.log(allRecipe)
+  console.log(allRecipe)
+
   res.json(allRecipe);
 });
 

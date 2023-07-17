@@ -27,14 +27,14 @@ router.get("/recipes", async (req, res) => {
    console.log(allRecipe)
   console.log(allRecipe)
 
-  res.json(allRecipe);
+  res.json(allRecipe[0]);
 });
 
 router.get("/recipe/:recipeId", async (req, res) => {
   const recipeId = req.params.recipeId;
 
   const recipeList = await allRecipes.allRecipes();
-  const displayRecipe = await recipeById.recipeById(recipeId, recipeList);
+  const displayRecipe = await recipeById.recipeById(recipeId, recipeList[0]);
   res.json(displayRecipe);
 });
 

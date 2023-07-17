@@ -32,7 +32,9 @@ async function recipeById(recipeId, recipeList) {
         });
       });
       const title = $("div.title >h1", html).text();
-      const img = $(".swiper-slide> img", html).attr("data-src");
+      const img = $(".swiper-slide> img", html).attr("data-src") 
+      || $(".video", html).attr("data-image")
+      || $(".image > .lazy", html).attr("data-src") ;
       descriptionSteps = [];
       $("div.description > p", html).each(function () {
         const description = $(this).text();
